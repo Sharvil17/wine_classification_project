@@ -6,12 +6,12 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import accuracy_score, classification_report, confusion_matrix
-from sklearn.datasets import load_breast_cancer
+from sklearn.datasets import load_wine
 
-# Load the Breast Cancer dataset
-cancer = load_breast_cancer()
-df = pd.DataFrame(cancer.data, columns=cancer.feature_names)
-df['target'] = cancer.target
+# Load the Wine dataset
+wine = load_wine()
+df = pd.DataFrame(wine.data, columns=wine.feature_names)
+df['target'] = wine.target
 
 # Display the first few rows of the dataset
 print("Dataset Preview:")
@@ -57,10 +57,10 @@ print(classification_report(y_test, y_pred))
 # Generate and visualize the confusion matrix
 conf_matrix = confusion_matrix(y_test, y_pred)
 plt.figure(figsize=(6,5))
-sns.heatmap(conf_matrix, annot=True, fmt='d', cmap='Blues', xticklabels=cancer.target_names, yticklabels=cancer.target_names)
+sns.heatmap(conf_matrix, annot=True, fmt='d', cmap='Blues', xticklabels=wine.target_names, yticklabels=wine.target_names)
 plt.xlabel('Predicted Labels')
 plt.ylabel('True Labels')
 plt.title('Confusion Matrix')
 plt.show()
 
-print("\nThe RandomForest classifier successfully classifies the breast cancer dataset with high accuracy. The confusion matrix and classification report provide insights into model performance across different classes.")
+print("\nThe RandomForest classifier successfully classifies the wine dataset with high accuracy. The confusion matrix and classification report provide insights into model performance across different classes.")
